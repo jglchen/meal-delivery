@@ -9,6 +9,9 @@ This is a project of my [Side Project Series](https://jglchen.github.io/), liste
 - #### [Meal Delivery App](https://jglchen.github.io/meal-delivery/)
     A semi-commercial meal-delivery app for demonstrations.
 
+- #### [React Native Meal Delivery App](https://jglchen.github.io/react-native-meal-delivery/)
+    The mobile version of the [Meal Delivery App](https://jglchen.github.io/meal-delivery/), a semi-commercial meal-delivery app for demonstrations.
+
 - #### [Appointment Scheduler](https://jglchen.github.io/scheduler-app/)
     An appointment scheduler app built with next.js for demonstrations.
 
