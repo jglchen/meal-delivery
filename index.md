@@ -34,3 +34,5 @@ The key functionalities of this app are summarized as bolow:
 ### [React Native GitHub](https://github.com/jglchen/react-native-meal-delivery)
 ### back To [Series Home](https://jglchen.github.io/)
 
+{% include giscus.html %}
+
