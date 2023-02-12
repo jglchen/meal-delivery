@@ -1,0 +1,132 @@
+.radio_element {
+    display: flex; 
+    justify-content: center; 
+    cursor: pointer;
+    padding: 0 1rem
+}
+
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexcontainer > div {
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    width: 50%;
+}
+
+.flexcontainer > div.threediv {
+    width: 33%;
+}
+
+.flex_container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fffff0;
+}
+  
+.flex_container > div {
+    padding: 0.5rem;
+    width: 50%;
+}
+
+.flex_container > div.threediv {
+    width: 33%;
+}
+
+.flex_box {
+    display: flex;
+    flex-wrap: wrap;   
+}
+
+.flex_box > div {
+    width: 25%;   
+}
+
+.image_container {
+    position: relative;
+    text-align: center;
+    color: white;   
+}
+
+.top_left {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+  
+.top_right {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.Modal {
+    position: absolute;
+    top: 5rem;
+    left: 30%;
+    width: 50%;
+    max-width: 600px;
+    bottom: 0;
+    max-height: 800px;
+    border-radius: 0.5rem;
+    border: 2px solid lightgray;
+    background-color: #fff;
+}
+
+.container { 
+    position: relative;
+    width: 100%;
+    height: 100%; 
+}
+
+.container_head {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    padding: 0.5rem;
+    background-color: lightgrey;
+}
+  
+.container_body {
+    position: absolute; 
+    top: 2.5rem; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem;
+    overflow-y: auto;
+}
+
+.item {
+    width: 100%;
+    padding-bottom: 0.5rem;
+}
+
+
+.label_button {
+    display: block;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+    padding: .75rem;
+    margin-top: 0;
+    text-align: center; 
+    outline: none;
+    background: transparent;
+    cursor: pointer;    
+}
+
+input.qty_keyin {
+    display: inline-block;
+    width: 5rem;
+    height: 1.2rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    margin-left: 0.5rem;
+}
+
+
+
+
