@@ -38,7 +38,7 @@ function MenuDisplay({menuData}: PropsType){
     useEffect(() => {
       if (width < 600){
         setShopDataWidth('100%');
-        setHomeElWidth((homeEl.current as HTMLDivElement).offsetWidth || (width- 2* 16));
+        setHomeElWidth((homeEl.current as HTMLDivElement).offsetWidth || (width- 1.5 * 16));
       }
     },[width]);
     

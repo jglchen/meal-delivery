@@ -13,9 +13,9 @@ function HomeContent({shopListData}: PropsType){
 
     return(userContext && 
        <Fragment>
-         {(userContext.user.usertype === 2 && !userContext.showShopGuide) &&
+         {/*(userContext.user.usertype === 2 && !userContext.showShopGuide) &&
             <ShopOrders />
-         } 
+         */} 
          {(userContext.user.usertype !== 2 || userContext.showShopGuide) &&
            <ShopList shopListData={shopListData} />
          }

@@ -1,3 +1,4 @@
+//This component is deprecated
 import { useState, useEffect, useContext } from 'react';
 import {UserContext} from '@/components/Context';
 import 'material-icons/iconfont/material-icons.css';

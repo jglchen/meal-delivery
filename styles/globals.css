@@ -344,11 +344,11 @@ dd {
 
 .full-container {
   max-width: 100%;
-  padding: 0 1rem; }
+  padding: 0 0.75rem; }
 
 .container, .small-container, .medium-container {
   max-width: 1200px;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
   margin-left: auto;
   margin-right: auto; }
 
@@ -501,7 +501,7 @@ dd {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   text-transform: none;
-  padding: .75rem 1rem;
+  padding: .6rem 0.75rem;
   margin: 0 .5rem .5rem 0;
   vertical-align: middle;
   text-align: center;

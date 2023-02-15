@@ -145,7 +145,7 @@ function UserOrders(){
         {ordersContext.orderlist.map((item: MealOrderType) =>
           <div key={item.id} className={deliveryStyle.item}>
             <div className={deliveryStyle.userorder_list}>
-              <div style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Restaurant: {item.shopName}</div>
+              <div style={{fontWeight: 'bold', fontSize: '1.1rem', padding: '0.6rem 0'}}>Restaurant: {item.shopName}</div>
               {width >= 800 &&
                <>
                <button className="muted-button button button-isolated" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
@@ -172,7 +172,7 @@ function UserOrders(){
             <div>
                <meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '1rem'}}></meter>
             </div>
-            <div  className={deliveryStyle.userorder_list}>
+            <div className={deliveryStyle.userorder_list}>
               {(item.orderstatus === 1 || item.orderstatus === 5) &&
                  <>
                     <div>Placed@{(new Date(item.created!)).toLocaleTimeString('en-US')}&nbsp;&nbsp;&nbsp;Elapsed: {timeDiffPlacedToLast(item)}</div> 

@@ -7,6 +7,7 @@ import OrderDetail from './orderdetail';
 import lightBoxStyles from '@/styles/lightbox.module.css';
 import deliveryStyle from '@/styles/delivery.module.css';
 import loaderStyles from '@/styles/loader.module.css';
+import {useWindowSize} from '@react-hook/window-size';
 import { UserContext } from './Context';
 import { UserContextType, MealOrderType } from '@/lib/types';
 import { currOrderStatus, timeDiffPlacedToLast, timeDiffPlacedToCurrent, timeDiffLastToCurrent } from '@/lib/utils';
@@ -24,6 +25,7 @@ function OrderManage({shopId, initInPost, stopInPost}: PropsType){
     const [currentTime, setCurrentTime] = useState(new Date());
     const [showModal, setShowModal] = useState(false);
     const homeEl = useRef<HTMLDivElement | null>(null);
+    const [width] = useWindowSize();
 
     useEffect(() => {
       const timer = setInterval(() => {
@@ -125,28 +127,41 @@ function OrderManage({shopId, initInPost, stopInPost}: PropsType){
         }
         {mealOrders.map((item: MealOrderType) =>
           <div key={item.id} className={deliveryStyle.item}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-              <div style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Customer: {item.userName}</div>
-              <button className="muted-button button" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
-              <div>
+            <div className={deliveryStyle.userorder_list}>
+              <div style={{fontWeight: 'bold', fontSize: '1.1rem', padding: '0.6rem 0'}}>Customer: {item.userName}</div>
+              {width >= 800 &&
+              <>
+              <button className="muted-button button button-isolated" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
               {item.orderstatus === 0 &&
-
-                <button className="accent-button button" onClick={() => updateOrder(item)}>Start Processing</button>
+                <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Start Processing</button>
               }
               {item.orderstatus === 2 &&
-
-                <button className="accent-button button" onClick={() => updateOrder(item)}>Make In Route</button>
+                <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Make In Route</button>
               }
               {item.orderstatus === 3 &&
-
-                <button className="accent-button button" onClick={() => updateOrder(item)}>Meal Delivered</button>
+                <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Meal Delivered</button>
               }
+              </>
+              } 
+              {width < 800 &&
+              <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <button className="muted-button button button-isolated" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
+                {item.orderstatus === 0 &&
+                  <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Start Processing</button>
+                }
+                {item.orderstatus === 2 &&
+                  <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Make In Route</button>
+                }
+                {item.orderstatus === 3 &&
+                  <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Meal Delivered</button>
+                }
               </div>
+              }
             </div>
             <div>
-               <meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '3rem'}}></meter>
+               <meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '1rem'}}></meter>
             </div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div className={deliveryStyle.userorder_list}>
               {(item.orderstatus === 1 || item.orderstatus === 5) &&
                  <>
                     <div>Placed@{(new Date(item.created!)).toLocaleTimeString('en-US')}&nbsp;&nbsp;&nbsp;Elapsed: {timeDiffPlacedToLast(item)}</div> 

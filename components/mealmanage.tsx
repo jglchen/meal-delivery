@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, Fragment } from 'react';
+import { useState, useEffect, useRef, useContext, Fragment } from 'react';
 import axios from 'axios';
 import {UserContext} from '@/components/Context';
 import ReactModal from 'react-modal';
@@ -34,13 +34,23 @@ function MealManage({shopData, shopMutate, mealMenu, updateMenu, pageIndex, upda
     const [showEditModal, setShowEditModal] = useState(false);
     const [showProfileEditModal, setShowProfileEditModal] = useState(false);
     const [mealForEdit, setMealForEdit] = useState<MealDataType | null>(null);
+    const [shopDataWidth, setShopDataWidth] = useState('calc(100% - 192px)');
+    const homeEl = useRef<HTMLDivElement | null>(null);
     const [width] = useWindowSize();
+    const [homeElWidth, setHomeElWidth] = useState(0);
 
     useEffect(() => {
       if (mealMenu && mealMenu.length > 0){
         setMealForEdit(mealMenu[0]);
       }
     },[mealMenu]); 
+
+    useEffect(() => {
+      if (width < 600){
+        setShopDataWidth('100%');
+        setHomeElWidth((homeEl.current as HTMLDivElement).offsetWidth || (width- 1.5 * 16));
+      }
+    },[width]);
     
     function updateShopData(shop: ShopDataType){
       shopMutate(shop);
@@ -113,13 +123,18 @@ function MealManage({shopData, shopMutate, mealMenu, updateMenu, pageIndex, upda
     }
 
     return (userContext &&
-        <div>
+        <div ref={homeEl}>
            {shopData &&
             <div className={`${deliveryStyle.item} clearfix`} style={{backgroundColor: '#fffff0'}}>
               <div className="float-left">
-                <DisplayImage alt="" src={shopData.profileimage} width={192} />
+                {shopDataWidth === '100%' &&
+                  <DisplayImage alt="" src={shopData.profileimage} width={homeElWidth} height={192} />
+                }
+                {shopDataWidth !== '100%' &&
+                  <DisplayImage alt="" src={shopData.profileimage} width={192} />
+                }
               </div>
-              <div className={`${deliveryStyle.flex_container} float-left`} style={{width: 'calc(100% - 192px)'}}>
+              <div className={`${deliveryStyle.flex_container} float-left`} style={{width: shopDataWidth}}>
                 <div style={{fontWeight: 'bold'}}>{shopData.shopname}</div>
                 <div>
                 {shopData.foodsupply.replace(/(?:\r\n|\r|\n)/g, '<br />').split('<br />').map((itm: string, index: number) =>{
@@ -130,9 +145,26 @@ function MealManage({shopData, shopMutate, mealMenu, updateMenu, pageIndex, upda
                   )
                 })}
                 </div>
-                <div><button className="accent-button button" onClick={() => {setShowModal(true);}}>Add Meals</button></div>
-                <div><button className="accent-button button" onClick={() => {setShopEditModal(true);}}>Restaurant Edit</button></div>
-                <div><button className="accent-button button" onClick={() => {setShopProfileModal(true);}}>Restaurant Profile</button></div>
+                {shopDataWidth !== '100%' &&
+                <>
+                <div>
+                  <button className="accent-button button" onClick={() => {setShowModal(true);}}>Add Meals</button>
+                </div>  
+                <div>   
+                  <button className="accent-button button" onClick={() => {setShopEditModal(true);}}>Restaurant Edit</button>
+                </div>
+                <div>
+                  <button className="accent-button button" onClick={() => {setShopProfileModal(true);}}>Restaurant Profile</button>
+                </div>
+                </>  
+                }
+                {shopDataWidth === '100%' &&
+                <div>
+                  <button className="accent-button button" onClick={() => {setShowModal(true);}}>Add Meals</button>
+                  <button className="accent-button button" onClick={() => {setShopEditModal(true);}}>Restaurant Edit</button>
+                  <button className="accent-button button" onClick={() => {setShopProfileModal(true);}}>Restaurant Profile</button>
+                </div>
+                }
               </div>
             </div>
            } 

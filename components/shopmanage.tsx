@@ -86,7 +86,7 @@ function ShopManage(props: PropsType){
            <div className={lightBoxStyles.heading}>
                Manage My Restaurants
            </div>
-           <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+           <div style={{display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap'}}>
              {(userContext.user.shopid && userContext.user.shopid.length > 0 && userContext.user.shopid.filter(itm => itm.onboard === true).length > 0) &&
              <>
              {manageContent === 'meal' &&
@@ -117,7 +117,7 @@ function ShopManage(props: PropsType){
              </>
              }
              <button className="muted-button button" onClick={() => {setShowModal(true);}}>Add Restaurant</button>
-             <button className="muted-button button" style={{marginRight: '0.5rem'}} onClick={closeCallBack}>Close</button>
+             <button className="muted-button button button-right" onClick={closeCallBack}>Close</button>
            </div>
            <div>
            {(userContext.user.shopid && userContext.user.shopid.length > 0 && userContext.user.shopid.filter(itm => itm.onboard === true).length > 0) &&
