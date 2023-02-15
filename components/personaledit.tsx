@@ -262,7 +262,7 @@ function PersonalEdit(props: PropsType){
                Update My Personal Data
            </div>
            <div>
-             <button className="muted-button float-right button" style={{marginRight: '0.5rem'}} onClick={closeCallBack}>Close</button>
+             <button className="muted-button float-right button button-right" onClick={closeCallBack}>Close</button>
            </div>
            {userContext && 
                 <table>
@@ -273,7 +273,7 @@ function PersonalEdit(props: PropsType){
                               <>
                                 <td>{userContext.user.name}</td>
                                 <td>
-                                   <button className="float-right button" onClick={() => {updateNameInit();}}>Update</button>
+                                   <button className="float-right button button-right" onClick={() => {updateNameInit();}}>Update</button>
                                 </td>
                              </>
                            }
@@ -286,8 +286,8 @@ function PersonalEdit(props: PropsType){
                                 <td>
                                    {name.trim() !== userContext.user.name &&
                                      <>
-                                     <button className="float-right button" onClick={() => {updateNameReset();}}>Reset</button>
-                                     <button className="float-right button" onClick={submitNameUpdate}>Go Update</button>
+                                     <button className="float-right button button-right" onClick={() => {updateNameReset();}}>Reset</button>
+                                     <button className="float-right button button-right" onClick={submitNameUpdate}>Go Update</button>
                                      </>
                                    }
                                </td>
@@ -301,7 +301,7 @@ function PersonalEdit(props: PropsType){
                               <>
                                 <td></td>
                                 <td>
-                                   <button className="float-right button" onClick={() => {setUpdatePasswd(true);}}>Update</button>
+                                   <button className="float-right button button-right" onClick={() => {setUpdatePasswd(true);}}>Update</button>
                                 </td>
                              </>
                            }
@@ -314,8 +314,8 @@ function PersonalEdit(props: PropsType){
                                 <td>
                                    {passwd &&
                                       <>
-                                      <button className="float-right button" onClick={() => {setPasswd('');setPasswdErr('');}}>Reset</button>
-                                      <button className="float-right button" onClick={submitPasswdUpdate}>Go Update</button>
+                                      <button className="float-right button button-right" onClick={() => {setPasswd('');setPasswdErr('');}}>Reset</button>
+                                      <button className="float-right button button-right" onClick={submitPasswdUpdate}>Go Update</button>
                                       </>
                                    }
                                </td>
@@ -329,7 +329,7 @@ function PersonalEdit(props: PropsType){
                               <>
                                 <td>{userContext.user.phone}</td>
                                 <td>
-                                   <button className="float-right button" onClick={() => {updatePhoneInit();}}>Update</button>
+                                   <button className="float-right button button-right" onClick={() => {updatePhoneInit();}}>Update</button>
                                 </td>
                              </>
                            }
@@ -342,8 +342,8 @@ function PersonalEdit(props: PropsType){
                                 <td>
                                    {phone.trim() !== userContext.user.phone &&
                                      <>
-                                     <button className="float-right button" onClick={() => {updatePhoneReset();}}>Reset</button>
-                                     <button className="float-right button" onClick={submitPhoneUpdate}>Go Update</button>
+                                     <button className="float-right button button-right" onClick={() => {updatePhoneReset();}}>Reset</button>
+                                     <button className="float-right button button-right" onClick={submitPhoneUpdate}>Go Update</button>
                                      </> 
                                   }
                                </td>
@@ -365,7 +365,7 @@ function PersonalEdit(props: PropsType){
                                 })}    
                                 </td>
                                 <td>
-                                   <button className="float-right button" onClick={() => {updateAddressInit();}}>Update</button>
+                                   <button className="float-right button button-right" onClick={() => {updateAddressInit();}}>Update</button>
                                 </td>
                              </>
                            }
@@ -378,8 +378,8 @@ function PersonalEdit(props: PropsType){
                                 <td>
                                    {address.trim() !== userContext.user.address &&
                                    <>
-                                   <button className="float-right button" onClick={() => {updateAddressReset();}}>Reset</button>
-                                   <button className="float-right button" onClick={submitAddressUpdate}>Go Update</button>
+                                   <button className="float-right button button-right" onClick={() => {updateAddressReset();}}>Reset</button>
+                                   <button className="float-right button button-right" onClick={submitAddressUpdate}>Go Update</button>
                                    </>
                                    } 
                                    
@@ -397,7 +397,7 @@ function PersonalEdit(props: PropsType){
                                {userContext.user.tobeowner ? 'Yes': 'No'} 
                              </td>
                              <td>
-                                <button className="float-right button" onClick={() => {updateTobeOwnerInit();}}>Update</button>
+                                <button className="float-right button button-right" onClick={() => {updateTobeOwnerInit();}}>Update</button>
                              </td>
                           </>
                         }
@@ -417,8 +417,8 @@ function PersonalEdit(props: PropsType){
                              <td>
                                 {tobeowner !== userContext.user.tobeowner && 
                                 <>
-                                <button className="float-right button" onClick={() => {updateTobeOwnerReset();}}>Reset</button>
-                                <button className="float-right button" onClick={submitTobeOwnerUpdate}>Go Update</button>
+                                <button className="float-right button button-right" onClick={() => {updateTobeOwnerReset();}}>Reset</button>
+                                <button className="float-right button button-right" onClick={submitTobeOwnerUpdate}>Go Update</button>
                                 </>
                                 }
                                 

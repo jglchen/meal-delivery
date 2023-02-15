@@ -33,7 +33,7 @@ const DisplayImage = (props: ImageProps) => {
          src={getImageSource(imageData)}
          width={width}
          height={height}
-         objectFit={objectFit}
+         style={{objectFit}}
        />
 
     );    

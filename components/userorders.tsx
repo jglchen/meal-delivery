@@ -8,6 +8,7 @@ import OrderDetail from './orderdetail';
 import lightBoxStyles from '@/styles/lightbox.module.css';
 import deliveryStyle from '@/styles/delivery.module.css';
 import loaderStyles from '@/styles/loader.module.css';
+import {useWindowSize} from '@react-hook/window-size';
 import { UserContext, OrdersContext } from './Context';
 import { UserContextType, OrdersContextType, MealOrderType, OrderShopsElm } from '@/lib/types';
 import { currOrderStatus, timeDiffPlacedToLast, timeDiffPlacedToCurrent, timeDiffLastToCurrent } from '@/lib/utils';
@@ -28,6 +29,7 @@ function UserOrders(){
     const [showModal, setShowModal] = useState(false);
     const [inPost, setInPost] = useState(false);
     const homeEl = useRef<HTMLDivElement | null>(null);
+    const [width] = useWindowSize();
 
     useEffect(() => {
        const timer = setInterval(() => {
@@ -142,22 +144,35 @@ function UserOrders(){
         }
         {ordersContext.orderlist.map((item: MealOrderType) =>
           <div key={item.id} className={deliveryStyle.item}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div className={deliveryStyle.userorder_list}>
               <div style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Restaurant: {item.shopName}</div>
-              <button className="muted-button button" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
-              <div>
-              {item.orderstatus === 0 &&
-                 <button className="accent-button button" onClick={() => removeOrder(item)}>Cancel</button>
+              {width >= 800 &&
+               <>
+               <button className="muted-button button button-isolated" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
+               {item.orderstatus === 0 &&
+                  <button className="accent-button button button-isolated" onClick={() => removeOrder(item)}>Cancel</button>
+               }
+               {item.orderstatus === 4 &&
+                  <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Confirm Receipt</button>
+               }
+               </>
+              } 
+              {width < 800 &&
+               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                  <button className="muted-button button button-isolated" onClick={() => {setMealOrder(item); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
+                  {item.orderstatus === 0 &&
+                     <button className="accent-button button button-isolated" onClick={() => removeOrder(item)}>Cancel</button>
+                  }
+                  {item.orderstatus === 4 &&
+                     <button className="accent-button button button-isolated" onClick={() => updateOrder(item)}>Confirm Receipt</button>
+                  }
+               </div>
               }
-              {item.orderstatus === 4 &&
-                 <button className="accent-button button" onClick={() => updateOrder(item)}>Confirm Receipt</button>
-              }
-              </div>
             </div>
             <div>
-               <meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '3rem'}}></meter>
+               <meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '1rem'}}></meter>
             </div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <div  className={deliveryStyle.userorder_list}>
               {(item.orderstatus === 1 || item.orderstatus === 5) &&
                  <>
                     <div>Placed@{(new Date(item.created!)).toLocaleTimeString('en-US')}&nbsp;&nbsp;&nbsp;Elapsed: {timeDiffPlacedToLast(item)}</div> 

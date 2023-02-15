@@ -3,6 +3,7 @@ import axios from 'axios';
 import {UserContext} from '@/components/Context';
 import ReactModal from 'react-modal';
 import 'material-icons/iconfont/material-icons.css';
+import {useWindowSize} from '@react-hook/window-size';
 import MealAdd from './mealadd';
 import MealEdit from './mealedit';
 import MealProfileUpdate from './mealprofileupdate';
@@ -33,6 +34,7 @@ function MealManage({shopData, shopMutate, mealMenu, updateMenu, pageIndex, upda
     const [showEditModal, setShowEditModal] = useState(false);
     const [showProfileEditModal, setShowProfileEditModal] = useState(false);
     const [mealForEdit, setMealForEdit] = useState<MealDataType | null>(null);
+    const [width] = useWindowSize();
 
     useEffect(() => {
       if (mealMenu && mealMenu.length > 0){

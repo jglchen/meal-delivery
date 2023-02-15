@@ -22,7 +22,7 @@ function UserHead(){
             Welcome to Happy Eats!
             <div>
               <Tooltip title="About this app" arrow>
-                <button className="muted-button button" style={{marginRight: '0.5rem'}} onClick={() => setAboutInfo(true)}>About</button>               
+                <button className="muted-button button button-right" onClick={() => setAboutInfo(true)}>About</button>               
               </Tooltip>
             </div>
           </h1>

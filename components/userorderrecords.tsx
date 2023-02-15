@@ -201,9 +201,9 @@ function UserOrderRecords(props: PropsType){
          </div>
          <div  style={{display: 'flex', justifyContent: 'flex-end'}}>
             {shopId &&
-               <button className="muted-button button" onClick={() => setShopId('')}>Back To Summary</button>
+               <button className="muted-button button button-right" onClick={() => setShopId('')}>Back To Summary</button>
             }
-            <button className="muted-button button" style={{marginRight: '0.5rem'}} onClick={props.closeOrderRecords}>Close</button>
+            <button className="muted-button button button-right" onClick={props.closeOrderRecords}>Close</button>
          </div>
          {userContext &&
          <>
@@ -214,7 +214,7 @@ function UserOrderRecords(props: PropsType){
               }
               {userOrders.map((item: MealOrderType) =>
                <div key={item.id} className={deliveryStyle.item}>
-                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                 <div className={deliveryStyle.userorder_list}>
                    <div style={{fontWeight: 'bold', fontSize: '1.1rem'}}>Restaurant: {getShopName(shopId)}</div>
                    <div>Placed@{(new Date(item.created!)).toLocaleString()}</div>
                    {item.orderstatus === 1 &&
@@ -224,19 +224,19 @@ function UserOrderRecords(props: PropsType){
                      <div>{currOrderStatusLong(item)}</div> 
                    }
                  </div>
-                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                    <div style={{width: '75%'}}><meter min="0" value={item.orderstatus} max="5" style={{width: '100%', height: '3rem'}}></meter></div>
-                    <button className="muted-button button" style={{marginRight: '0rem'}} onClick={() => {setMealOrder({...item, shopName: getShopName(shopId)}); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
+                 <div className={deliveryStyle.userorder_list}>
+                    <div className={deliveryStyle.listitem}><meter min="0" value={item.orderstatus} max="5"></meter></div>
+                    <button className={`muted-button button ${deliveryStyle.listitem}`} onClick={() => {setMealOrder({...item, shopName: getShopName(shopId)}); setShowModal(true);}}>${(item.sum + item.tax).toFixed(2)} Order Details</button>
                  </div>
                  <hr />  
                </div> 
               )}
               <div>
-              {pageIndex > 0 &&                   
-                  <button className="muted-button" onClick={() => {const pIndex = pageIndex - 1; setPageIndex(pIndex); retrieveUserOrders(shopId, pIndex);}}>&larr;  Previous</button>
+              {pageIndex > 0 &&                 
+                  <button className="muted-button button" onClick={() => {const pIndex = pageIndex - 1; setPageIndex(pIndex); retrieveUserOrders(shopId, pIndex);}}>&larr;  Previous</button>
               }
               {orderCount > pageSizeOrders*(pageIndex+1) &&
-                  <button className="muted-button" onClick={() => {const pIndex = pageIndex + 1; setPageIndex(pIndex); retrieveUserOrders(shopId, pIndex);}}>Next  &rarr;</button>
+                  <button className="muted-button button" onClick={() => {const pIndex = pageIndex + 1; setPageIndex(pIndex); retrieveUserOrders(shopId, pIndex);}}>Next  &rarr;</button>
               }
               </div>
             </>

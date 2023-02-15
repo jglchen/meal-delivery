@@ -154,12 +154,12 @@ function MealOrder({shopData, mealArr, updateMealOrderArr, resetOrder, closeModa
     return ((userContext && ordersContext) &&
         <div className={deliveryStyle.container}>
           <div className={`${deliveryStyle.container_head} ${'text-center'}`}>
-              Draft Order Details To {shopData.shopname}
-             <Tooltip title="Close" arrow>
-                <div className="float-right" style={{cursor: 'pointer'}} onClick={() => closeModal()}>
-                   <span className="material-icons">close</span>
-                </div>
-             </Tooltip>
+            <Tooltip title="Close" arrow>
+               <div className="float-right" style={{cursor: 'pointer'}} onClick={() => closeModal()}>
+                  <span className="material-icons">close</span>
+               </div>
+            </Tooltip>
+            Draft Order Details To {shopData.shopname}
           </div>
           <div className={deliveryStyle.container_body}>
             {!userContext.isLoggedIn &&

@@ -10,7 +10,7 @@
   
 .lightbox .module{
      margin: 0 auto;
-     width: 80%;
+     width: 100%;
      height: 100%;
      background-color:#fff;
      border-radius:0 0 5px 5px; 
@@ -29,3 +29,8 @@
     color: #404040; 
 }
   
+@media (min-width: 1000px) {
+    .lightbox .module{
+        width: 80%;
+    }
+}    

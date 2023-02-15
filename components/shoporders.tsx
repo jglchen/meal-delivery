@@ -33,14 +33,14 @@ function ShopOrders(){
          <>
            <div>
            {(userContext.user.shopid && userContext.user.shopid.length > 0 && userContext.user.shopid.filter(itm => itm.onboard === true).length > 0) &&
-             <> 
+             <div> 
              <label htmlFor="shopIDSelect">My Restaurants</label>
              <select value={shopId} id="shopIDSelect" onChange={(e) => setShopId(e.currentTarget.value)}>
              {userContext.user.shopid.filter(itm => itm.onboard === true)
               .map(itm => <option key={itm.id} value={itm.id}>{itm.shopname}</option>)
              }   
              </select>
-             </> 
+             </div> 
            }
            {(!userContext.user.shopid || userContext.user.shopid.length === 0 || userContext.user.shopid.filter(itm => itm.onboard === true).length === 0) &&
             <h5>Currently No Restaurant Under My Management</h5>

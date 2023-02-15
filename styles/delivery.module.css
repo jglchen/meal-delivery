@@ -1,3 +1,12 @@
+.user_head {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.user_head > div:last-child {
+    float: right;
+    margin-right: 0;
+}
+
 .radio_element {
     display: flex; 
     justify-content: center; 
@@ -12,7 +21,7 @@
 
 .flexcontainer > div {
     padding: 0.5rem 0.5rem 0.5rem 0;
-    width: 50%;
+    width: 100%;
 }
 
 .flexcontainer > div.threediv {
@@ -27,8 +36,9 @@
   
 .flex_container > div {
     padding: 0.5rem;
-    width: 50%;
+    width: 100%;
 }
+
 
 .flex_container > div.threediv {
     width: 33%;
@@ -63,9 +73,9 @@
 
 .Modal {
     position: absolute;
-    top: 5rem;
-    left: 30%;
-    width: 50%;
+    top: 2rem;
+    left: 0;
+    width: 100%;
     max-width: 600px;
     bottom: 0;
     max-height: 800px;
@@ -85,14 +95,15 @@
     top: 0; 
     left: 0;
     right: 0;
-    height: 2.5rem;
+    height: 4rem;
     padding: 0.5rem;
     background-color: lightgrey;
+    overflow-y: hidden;
 }
   
 .container_body {
     position: absolute; 
-    top: 2.5rem; 
+    top: 4rem; 
     left: 0;
     right: 0;
     bottom: 0;
@@ -100,11 +111,94 @@
     overflow-y: auto;
 }
 
+.userorder_list {
+    width: 100%;
+}
+
+.userorder_list > div.listitem{
+    width: 100%;
+}
+
+.userorder_list > button.listitem{
+    width: 100%;
+}
+
+.userorder_list  meter{
+    width: 100%;
+    height: 1rem;
+}
+
+@media (min-width: 600px) {
+    .user_head {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+    }
+
+    .user_head > div:last-child {
+        float: initial;
+    }
+    
+    .flexcontainer > div {
+        padding: 0.5rem 0.5rem 0.5rem 0;
+        width: 50%;
+    }
+        
+    .flex_container > div {
+        padding: 0.5rem;
+        width: 50%;
+    }
+    
+    .Modal {
+        left: 10%;
+        width: 90%;
+    }
+
+}
+
+@media (min-width: 800px) {
+    .userorder_list {
+        display: flex;
+        justify-content: space-between;
+        align-items: 'center';
+    }
+
+    .userorder_list > div.listitem{
+        width: 75%;
+    }
+
+    .userorder_list > button.listitem{
+        width: initial;
+        margin: 0 0 .5rem 1rem;
+    }
+
+    .userorder_list meter{
+        width: 100%;
+        height: 3rem;
+    }
+    
+}    
+
+@media (min-width: 1000px) {
+    .Modal {
+        left: 25%;
+        width: 75%;
+    }
+
+    .container_head {
+        height: 2.5rem;
+    }
+    
+    .container_body {
+        top: 2.5rem; 
+    }
+    
+}
+
 .item {
     width: 100%;
     padding-bottom: 0.5rem;
 }
-
 
 .label_button {
     display: block;

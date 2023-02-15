@@ -7,6 +7,7 @@ import UsersToOwners from './userstoowners';
 import ShopManage from './shopmanage';
 import ShopsSetOnBoard from './shopsetonboard';
 import dropDownStyles from '@/styles/dropdown.module.css';
+import deliveryStyles from '@/styles/delivery.module.css';
 import lightBoxStyles from '@/styles/lightbox.module.css';
 import {UserContextType} from '@/lib/types';
 
@@ -48,7 +49,7 @@ function UserAdmin(){
 
    return (userContext &&
       <> 
-      <div style={{padding: '0.5rem', display:'flex', justifyContent:'space-between', alignItems: 'center'}}>
+      <div className={deliveryStyles.user_head}>
          <div>Hi! {userContext.user.name || ''}</div>
          <div>
             {userContext.user.usertype === 2 &&

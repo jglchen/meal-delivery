@@ -5,6 +5,7 @@ import store from 'store2';
 import {UserContext} from '@/components/Context';
 import ReactModal from 'react-modal';
 import 'material-icons/iconfont/material-icons.css';
+import {useWindowSize} from '@react-hook/window-size';
 import DisplayImage from './displayimage';
 import UserOrders from './userorders';
 import MealOrder from './mealorder';
@@ -27,10 +28,20 @@ function MenuDisplay({menuData}: PropsType){
     const [orderShops, setOrderShops] = useState<OrderShopsElm[]>([]);
     const [orderRecords, setOrderRecords] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [shopDataWidth, setShopDataWidth] = useState('calc(100% - 192px)');
     const homeEl = useRef<HTMLDivElement | null>(null);
     const itemsRef = useRef<HTMLInputElement[]>([]);
     const router = useRouter();
+    const [width] = useWindowSize();
+    const [homeElWidth, setHomeElWidth] = useState(0);
 
+    useEffect(() => {
+      if (width < 600){
+        setShopDataWidth('100%');
+        setHomeElWidth((homeEl.current as HTMLDivElement).offsetWidth || (width- 2* 16));
+      }
+    },[width]);
+    
     useEffect(() => {
       if (menuData.mealList && menuData.mealList.length > 0){
          const mealList = menuData.mealList.map(item =>  {
@@ -147,9 +158,14 @@ function MenuDisplay({menuData}: PropsType){
         {(menuData.shopData && !blockedUser) &&
         <div className={`${deliveryStyle.item} clearfix`} style={{backgroundColor: '#fffff0'}}>
           <div className="float-left">
-            <DisplayImage alt="" src={menuData.shopData.profileimage} width={192} />
+            {shopDataWidth === '100%' &&
+              <DisplayImage alt="" src={menuData.shopData.profileimage} width={homeElWidth} height={192} />
+            }
+            {shopDataWidth !== '100%' &&
+              <DisplayImage alt="" src={menuData.shopData.profileimage} width={192} />
+            }
           </div>
-          <div className={`${deliveryStyle.flex_container} float-left`} style={{width: 'calc(100% - 192px)'}}>
+          <div className={`${deliveryStyle.flex_container} float-left`} style={{width: shopDataWidth}}>
             <div style={{fontWeight: 'bold'}}>{menuData.shopData.shopname}</div>
             <div>
             {menuData.shopData.foodsupply.replace(/(?:\r\n|\r|\n)/g, '<br />').split('<br />').map((itm: string, index: number) =>{
@@ -250,4 +266,6 @@ function MenuDisplay({menuData}: PropsType){
 }
 
 export default MenuDisplay;    
+
+
  
