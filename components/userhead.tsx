@@ -26,9 +26,11 @@ function UserHead(){
               </Tooltip>
             </div>
           </h1>
+          {/* 
           <h5 className="text-right">
              React Native Expo Publish: <a href="https://exp.host/@jglchen/meal-delivery" target="_blank" rel="noreferrer">https://exp.host/@jglchen/meal-delivery</a>
-          </h5>           
+          </h5> 
+          */}          
           {userContext.isLoggedIn ?
              (<UserAdmin />)
              :

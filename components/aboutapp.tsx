@@ -36,7 +36,12 @@ function AboutApp({closeAboutInfo}: PropsType){
                 <li>Regular users can track down all their purchase order records.</li>
                 <li>Restaurant owners can examine all the clients, which have placed orders at their restaurants, and their purchase order records.</li>
             </ol>
-            </p> 
+            </p>
+            <p>
+            <strong>iOS</strong> and <strong>Android</strong> mobile apps are also delivered. 
+            The apps are developed with <strong>React Native</strong>, anyone who is interested can test the development builds with <a href='https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/0d34147e-b06d-4298-aa6d-757691184c99' target='_blank' rel='noreferrer'>iOS Simulator Build</a> and <a href='https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/a58cdda5-857a-4f1e-9721-5f8397303a47' target='_blank' rel='noreferrer'>Android Internal Distribution Build</a>.
+            If the build storage link has expired, please go to <a href='https://projects-jglchen.vercel.app/en/contact' target='_blank' rel='noreferrer'>https://projects-jglchen.vercel.app/en/contact</a> to request build files.
+            </p>
            </div>       
         </div>
     );

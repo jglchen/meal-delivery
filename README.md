@@ -15,12 +15,14 @@ The key functionalities of this app are summarized as bolow:
 9. Regular users can track down all their purchase order records.
 10. Restaurant owners can examine all the clients, which have placed orders at their restaurants, and their purchase order records.
 
-**iOS** and **Android** mobile apps are also delivered. The apps are developed with **React Native**, anyone who is interested can test the apps through the [Expo Publish Link](https://expo.dev/@jglchen/meal-delivery) with [Expo Go](https://expo.dev/client) app. 
+**iOS** and **Android** mobile apps are developed with **React Native**, anyone who is interested can test the development builds with [iOS Simulator Build](https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/0d34147e-b06d-4298-aa6d-757691184c99) and [Android Internal Distribution Build](https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/a58cdda5-857a-4f1e-9721-5f8397303a47). If the build storage link has expired, please go to [https://projects-jglchen.vercel.app/en/contact](https://projects-jglchen.vercel.app/en/contact) to request build files.
+
 
 ### [View the App](https://meal-delivery-three.vercel.app)
 ### [App GitHub](https://github.com/jglchen/meal-delivery)
 ### Docker: docker run -p 3000:3000 jglchen/meal-delivery
-### [React Native Expo Publish](https://expo.dev/@jglchen/meal-delivery)
+### [iOS Simulator Build](https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/0d34147e-b06d-4298-aa6d-757691184c99)
+### [Android Internal Distribution Build](https://expo.dev/accounts/jglchen/projects/meal-delivery/builds/a58cdda5-857a-4f1e-9721-5f8397303a47)
 ### [React Native GitHub](https://github.com/jglchen/react-native-meal-delivery)
 
 
